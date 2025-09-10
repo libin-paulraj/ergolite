@@ -1,0 +1,740 @@
+{% extends 'base/base.html' %} {% load static %} {% block body %}
+{% include "imports/index folder.html" %}
+{% include "base/cart_data_handler.html" %}
+
+<style>
+    .newsletter__banner--thumbnail__img {
+      width: 1800px;
+      height: 700px;
+    }
+    .banner__scroll-wrapper {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scrollBanner 10s linear infinite;
+    }
+    
+    @keyframes scrollBanner {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-80%);
+      }
+    }
+    
+    .banner__section {
+      background-color: wheat;
+      padding: 1rem;
+    }
+    
+    .banner__items {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+    
+    .banner__items img {
+      height: 400px;
+    }
+
+      
+ /* Responsive grid wrapper for product cards */
+.product__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Product item styling */
+.product__items {
+  position: relative;
+  overflow: hidden;
+  padding: 10px;
+  margin: 15px;
+  width: 100%;
+  max-width: 250px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.product__items:hover {
+  transform: translateY(-5px);
+}
+
+.product__items--thumbnail {
+  height: 300px;
+  position: relative;
+}
+
+.product__items--thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover image swap logic */
+.product2-img,
+.product2-btn {
+  display: none;
+}
+
+.product__items:hover .product1-img,
+.product__items:hover .product1-btn {
+  display: none;
+}
+
+.product__items:hover .product2-img,
+.product__items:hover .product2-btn {
+  display: block;
+}
+
+/* Name swap on hover */
+.product2-name {
+  display: none;
+}
+
+.product__items:hover .product1-name {
+  display: none;
+}
+
+.product__items:hover .product2-name {
+  display: inline;
+}
+
+.product__items--content {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.primary__btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* Color options layout */
+.product__items--color__wrapper {
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0.5rem;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+  .product__container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product__items {
+    width: 90%;
+    max-width: 100%;
+  }
+
+  .product__items--thumbnail {
+    height: auto;
+  }
+
+  .product__items--thumbnail img {
+    height: auto;
+  }
+
+  .product__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primary__btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+</style>
+
+
+<main class="main__content_wrapper" style="overflow: hidden;">
+    <!-- Start slider section -->
+    <section class="hero__slider--section">
+        <div class="hero__slider--inner hero__slider--activation swiper">
+            <div class="hero__slider--wrapper swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="hero__slider--items hero__slider--bg slider1">
+                        <div class="container-fluid">
+                            <div class="hero__slider--items__inner">
+                                <div class="row row-cols-1">
+                                    <div class="col">
+                                        <div class="slider__content">
+                                            <p class="slider__content--desc desc1 text-dark mb-15">
+                                                <!-- Discover our best furniture collection from home -->
+                                            </p>
+                                            <h2 class="slider__content--maintitle text-dark h1">
+                                                Stylish Furniture <br/>
+                                                Bring Beauti
+                                            </h2>
+                                            <p class="slider__content--desc text-dark mb-35 d-sm-2-none">
+                                                <!--    Great furniture can bring beauty at your home, So
+                                                  buy our popular <br />
+                                                  and stylish furniture. Now you get up to 100 %
+                                                  discount now.    -->
+                                            </p>
+                                            <a class="slider__content--btn primary__btn">Start to Buying</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="hero__slider--items hero__slider--bg slider2">
+                        <div class="container-fluid">
+                            <div class="hero__slider--items__inner">
+                                <div class="row">
+                                    <div class="col-lg-6 offset-lg-6">
+                                        <div class="slider__content text-center">
+                                            <p class="slider__content--desc desc1 right text-dark mb-15">
+                                                <!-- Discover our best furniture collection from office -->
+                                            </p>
+                                            <h2 class="slider__content--maintitle text-dark h1">
+                                                Stylish Furniture <br/>
+                                                Bring Beauti
+                                            </h2>
+                                            <p class="slider__content--desc text-dark mb-35 d-sm-2-none">
+                                                <!--    Great furniture can bring beauty at your office, So
+                                                  buy our popular     -->
+                                            </p>
+                                            <a class="slider__content--btn primary__btn">Start to Buying</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="hero__slider--items hero__slider--bg slider3">
+                        <div class="container-fluid">
+                            <div class="hero__slider--items__inner">
+                                <div class="row row-cols-1">
+                                    <div class="col">
+                                        <div class="slider__content">
+                                            <p class="slider__content--desc desc1 text-dark mb-15">
+                                                <!-- Discover our best furniture collection from office -->
+                                            </p>
+                                            <h2 class="slider__content--maintitle text-dark h1">
+                                                Stylish Furniture <br/>
+                                                Bring Beauti
+                                            </h2>
+                                            <p class="slider__content--desc text-dark mb-35 d-sm-2-none">
+                                                <!--    Great furniture can bring beauty at your office, So
+                                                  buy our popular     -->
+                                            </p>
+                                            <a class="slider__content--btn primary__btn">Start to Buying</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper__nav--btn swiper-button-next"></div>
+            <div class="swiper__nav--btn swiper-button-prev"></div>
+        </div>
+    </section>
+    <!-- End slider section -->
+
+
+    <!-- Start banner section -->
+
+    <section class="banner__section section--padding" style="overflow: hidden;">
+        <div class="container-fluid">
+            <div class="banner__scroll-wrapper">
+                <!-- Repeat images twice for seamless looping -->
+                {% for tproduct in chair_top %}
+                <div class="banner__items">
+                    <a class="banner__items--thumbnail position__relative" href="{% url 'home:productdetail' tproduct.id %}">
+                        <!-- <img src="{% static 'index/assets/img/banner/pj12-removebg-preview.png' %}" alt="Director Chair" /> -->
+                        {% if tproduct.image %}
+                        <img src="{{ tproduct.image.url }}" alt="{{ tproduct.name }}">
+                        {% else %}
+                        <img src="{% static 'default-image.png' %}" alt="No Image">
+                        {% endif %}
+                        <div class="banner__items--content one">
+                            <h2 style="font-style: italic; font-size: 18px">{{ tproduct.name }}</h2>
+                        </div>
+                    </a>
+                </div>
+
+                {% endfor %}
+
+    </section>
+
+    <!-- End banner section -->
+
+    <!-- Start product section -->
+    <section class="product__section section--padding pt-0">
+        <div class="container-fluid">
+            <div class="section__heading text-center mb-30">
+                <h2 class="section__heading--maintitle p-5 mt-5">Most Popular Items</h2>
+            </div>
+            <ul class="product__tab--btn d-flex justify-content-center mb-50">
+                <li class="product__tab--btn__list" data-toggle="tab" data-target="#chair">
+                    <!-- Chair -->
+                </li>
+                <li class="product__tab--btn__list" data-toggle="tab" data-target="#sofa">
+                    <!-- Sofa -->
+                </li>
+                <li class="product__tab--btn__list" data-toggle="tab" data-target="#lamp">
+                    <!-- Lamp -->
+                </li>
+                <li class="product__tab--btn__list" data-toggle="tab" data-target="#table">
+                    <!-- Table -->
+                </li>
+                <li class="product__tab--btn__list" data-toggle="tab" data-target="#monitor">
+                    <!-- Monitor -->
+                </li>
+            </ul>
+            <div class="tab_content">
+                <div id="chair" class="tab_pane active show">
+                    <div class="product__section--inner">
+                        <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
+
+                            {% for p1, p2 in chairs %}
+
+                            <div class="product__container ">
+                                <div class="product__items text-center">
+
+
+                                    <h4><span class="product1-name ">{{ p1.name }}</span></h4>
+                                    <div class="product__items--thumbnail ">
+                                        <!-- Product 1 Image -->
+                                        <a href="{% url 'home:productdetail' p1.id  %}">
+                                            <img src="{{ p1.image.url }}" alt="{{ p1.name }}" class="product1-img "
+                                                 style="height: 250px;">
+
+                                        </a>
+
+
+                                        {% if p2 %}
+                                        <!-- Product 2 Image -->
+                                        <a href="{% url 'home:productdetail' p2.id  %}">
+                                            <h4><span class="product2-name">{{ p2.name }}</span></h4>
+                                            <img src="{{ p2.image.url }}" alt="{{ p2.name }}" class="product2-img "
+                                                 style="height: 250px;">
+
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="product__items--color">
+                                    <ul class="product__items--color__wrapper d-flex justify-content-center">
+                                        <li class="product__items--color__list">
+                                            <a class="product__items--color__link one" href="javascript:void(0)"><span
+                                                    class="visually-hidden">Color 1</span></a>
+                                        </li>
+                                        <li class="product__items--color__list">
+                                            <a class="product__items--color__link two" href="javascript:void(0)"><span
+                                                    class="visually-hidden">Color 2</span></a>
+                                        </li>
+                                        <li class="product__items--color__list">
+                                            <a class="product__items--color__link three"><span class="visually-hidden">Color 3</span></a>
+                                        </li>
+                                        <li class="product__items--color__list">
+                                            <a class="product__items--color__link four" href="javascript:void(0)"><span
+                                                    class="visually-hidden">Color 3</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Buttons below the card -->
+                                <div class="product__buttons">
+                                    <a href="{% url 'home:productdetail' p1.id  %}"
+                                       class="primary__btn product1-btn">View {{ p1.name }}</a>
+                                    {% if p2 %}
+                                    <a href="{% url 'home:productdetail' p2.id  %}"
+                                       class="primary__btn product2-btn">View {{ p2.name }}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+    </section>
+    <!-- End product section -->
+
+
+    <!-- Start banner section -->
+    <section class="banner__section section--padding pt-0">
+
+        <div class="container-fluid">
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 mb--n28">
+
+                {% for p3 in chair_bottom %}
+                <div class="col mb-28">
+                    <div class="banner__items">
+                        <a class="banner__items--thumbnail position__relative"
+                           href="{% url 'home:productdetail' p3.id %}">
+
+
+                            <img class="banner__items--thumbnail__img" src="{{p3.image.url}}" alt="banner-img"/>
+
+                            <div class="banner__items--content__style2 right">
+                                <h2 class="banner__items--content__style2--title">
+                                    {{p3.name}}
+                                    <br/>
+                                    Mini Chair
+                                </h2>
+                                <span class="banner__items--content__link primary__btn style2">Order Now</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- End banner section -->
+
+    <!-- Start Newsletter banner section -->
+    <section class="newsletter__banner--section section--padding pt-0">
+        <div class="container-fluid">
+            <div class="newsletter__banner--thumbnail position__relative">
+                <img class="newsletter__banner--thumbnail__img display-block"
+                     src="{% static 'index/assets/img/banner/pj61.jpeg' %}" alt="newsletter-banner"/>
+                <div class="newsletter__content newsletter__subscribe">
+                    <form class="newsletter__subscribe--form position__relative" action="#">
+                        <label><input class="newsletter__subscribe--input" placeholder="Enter your email address"
+                                      type="email"/></label>
+                        <button class="newsletter__subscribe--button primary__btn" type="submit">
+                            Subscribe
+                            <svg class="newsletter__subscribe--button__icon" xmlns="http://www.w3.org/2000/svg"
+                                 width="9.159" height="7.85" viewBox="0 0 9.159 7.85">
+                                <path data-name="Icon material-send"
+                                      d="M3,12.35l9.154-3.925L3,4.5,3,7.553l6.542.872L3,9.3Z"
+                                      transform="translate(-3 -4.5)" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Newsletter banner section -->
+
+    <!-- Start instagram section -->
+    <div class="instagram__section section--padding pt-0">
+        <div class="container-fluid p-0">
+            <div class="instagram__section--inner instagram__swiper--activation swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="instagram__thumbnail position__relative">
+                            <a class="instagram__thumbnail--link display-block" target="_blank">
+                                <img class="instagram__thumbnail--img display-block"
+                                     src="{% static 'index/assets/img/product/pj44__1_-removebg-preview.png' %}"
+                                     alt="instagram-img"/>
+                                <span class="instagram__social--icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="25.198" height="25.199"
+                                             viewBox="0 0 25.198 25.199">
+                                          <defs>
+                                            <radialGradient cx="0.133" cy="1.005" r="1.305"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.09" stop-color="#fa8f21"/>
+                                              <stop offset="0.78" stop-color="#d82d7e"/>
+                                            </radialGradient>
+                                            <radialGradient cx="0.606" cy="1.05" r="1.029"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.64" stop-color="#8c3aaa" stop-opacity="0"/>
+                                              <stop offset="1" stop-color="#8c3aaa"/>
+                                            </radialGradient>
+                                          </defs>
+                                          <path data-name="Path 145"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                          <path data-name="Path 146"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                        </svg>
+                                      </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="instagram__thumbnail position__relative">
+                            <a class="instagram__thumbnail--link display-block" target="_blank">
+                                <img class="instagram__thumbnail--img display-block"
+                                     src="{% static 'index/assets/img/product/pj201-removebg-preview.png' %}"
+                                     alt="instagram-img"/>
+                                <span class="instagram__social--icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="25.198" height="25.199"
+                                             viewBox="0 0 25.198 25.199">
+                                          <defs>
+                                            <radialGradient cx="0.133" cy="1.005" r="1.305"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.09" stop-color="#fa8f21"/>
+                                              <stop offset="0.78" stop-color="#d82d7e"/>
+                                            </radialGradient>
+                                            <radialGradient cx="0.606" cy="1.05" r="1.029"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.64" stop-color="#8c3aaa" stop-opacity="0"/>
+                                              <stop offset="1" stop-color="#8c3aaa"/>
+                                            </radialGradient>
+                                          </defs>
+                                          <path data-name="Path 145"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                          <path data-name="Path 146"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                        </svg>
+                                      </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="instagram__thumbnail position__relative">
+                            <a class="instagram__thumbnail--link display-block" target="_blank">
+                                <img class="instagram__thumbnail--img display-block"
+                                     src="{% static 'index/assets/img/product/pj21-removebg-preview.png' %}"
+                                     alt="instagram-img"/>
+                                <span class="instagram__social--icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="25.198" height="25.199"
+                                             viewBox="0 0 25.198 25.199">
+                                          <defs>
+                                            <radialGradient cx="0.133" cy="1.005" r="1.305"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.09" stop-color="#fa8f21"/>
+                                              <stop offset="0.78" stop-color="#d82d7e"/>
+                                            </radialGradient>
+                                            <radialGradient cx="0.606" cy="1.05" r="1.029"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.64" stop-color="#8c3aaa" stop-opacity="0"/>
+                                              <stop offset="1" stop-color="#8c3aaa"/>
+                                            </radialGradient>
+                                          </defs>
+                                          <path data-name="Path 145"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                          <path data-name="Path 146"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                        </svg>
+                                      </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="instagram__thumbnail position__relative">
+                            <a class="instagram__thumbnail--link display-block" target="_blank">
+                                <img class="instagram__thumbnail--img display-block"
+                                     src="{% static 'index/assets/img/product/pj28-removebg-preview.png' %}"
+                                     alt="instagram-img"/>
+                                <span class="instagram__social--icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="25.198" height="25.199"
+                                             viewBox="0 0 25.198 25.199">
+                                          <defs>
+                                            <radialGradient cx="0.133" cy="1.005" r="1.305"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.09" stop-color="#fa8f21"/>
+                                              <stop offset="0.78" stop-color="#d82d7e"/>
+                                            </radialGradient>
+                                            <radialGradient cx="0.606" cy="1.05" r="1.029"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.64" stop-color="#8c3aaa" stop-opacity="0"/>
+                                              <stop offset="1" stop-color="#8c3aaa"/>
+                                            </radialGradient>
+                                          </defs>
+                                          <path data-name="Path 145"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                          <path data-name="Path 146"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                        </svg>
+                                      </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="instagram__thumbnail position__relative">
+                            <a class="instagram__thumbnail--link display-block" target="_blank">
+                                <img class="instagram__thumbnail--img display-block"
+                                     src="{% static 'index/assets/img/product/pj23-removebg-preview.png' %}"
+                                     alt="instagram-img"/>
+                                <span class="instagram__social--icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="25.198" height="25.199"
+                                             viewBox="0 0 25.198 25.199">
+                                          <defs>
+                                            <radialGradient cx="0.133" cy="1.005" r="1.305"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.09" stop-color="#fa8f21"/>
+                                              <stop offset="0.78" stop-color="#d82d7e"/>
+                                            </radialGradient>
+                                            <radialGradient cx="0.606" cy="1.05" r="1.029"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.64" stop-color="#8c3aaa" stop-opacity="0"/>
+                                              <stop offset="1" stop-color="#8c3aaa"/>
+                                            </radialGradient>
+                                          </defs>
+                                          <path data-name="Path 145"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                          <path data-name="Path 146"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                        </svg>
+                                      </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="instagram__thumbnail position__relative">
+                            <a class="instagram__thumbnail--link display-block" target="_blank">
+                                <img class="instagram__thumbnail--img display-block"
+                                     src="{% static 'index/assets/img/product/pj24-removebg-preview.png' %}"
+                                     alt="instagram-img"/>
+                                <span class="instagram__social--icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="25.198" height="25.199"
+                                             viewBox="0 0 25.198 25.199">
+                                          <defs>
+                                            <radialGradient cx="0.133" cy="1.005" r="1.305"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.09" stop-color="#fa8f21"/>
+                                              <stop offset="0.78" stop-color="#d82d7e"/>
+                                            </radialGradient>
+                                            <radialGradient cx="0.606" cy="1.05" r="1.029"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.64" stop-color="#8c3aaa" stop-opacity="0"/>
+                                              <stop offset="1" stop-color="#8c3aaa"/>
+                                            </radialGradient>
+                                          </defs>
+                                          <path data-name="Path 145"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                          <path data-name="Path 146"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                        </svg>
+                                      </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="instagram__thumbnail position__relative">
+                            <a class="instagram__thumbnail--link display-block" target="_blank">
+                                <img class="instagram__thumbnail--img display-block"
+                                     src="{% static 'index/assets/img/product/pj26-removebg-preview.png' %}"
+                                     alt="instagram-img"/>
+                                <span class="instagram__social--icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="25.198" height="25.199"
+                                             viewBox="0 0 25.198 25.199">
+                                          <defs>
+                                            <radialGradient cx="0.133" cy="1.005" r="1.305"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.09" stop-color="#fa8f21"/>
+                                              <stop offset="0.78" stop-color="#d82d7e"/>
+                                            </radialGradient>
+                                            <radialGradient cx="0.606" cy="1.05" r="1.029"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.64" stop-color="#8c3aaa" stop-opacity="0"/>
+                                              <stop offset="1" stop-color="#8c3aaa"/>
+                                            </radialGradient>
+                                          </defs>
+                                          <path data-name="Path 145"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                          <path data-name="Path 146"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                        </svg>
+                                      </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="instagram__thumbnail position__relative">
+                            <a class="instagram__thumbnail--link display-block" target="_blank">
+                                <img class="instagram__thumbnail--img display-block"
+                                     src="{% static 'index/assets/img/product/pj25-removebg-preview.png' %}"
+                                     alt="instagram-img"/>
+                                <span class="instagram__social--icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="25.198" height="25.199"
+                                             viewBox="0 0 25.198 25.199">
+                                          <defs>
+                                            <radialGradient cx="0.133" cy="1.005" r="1.305"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.09" stop-color="#fa8f21"/>
+                                              <stop offset="0.78" stop-color="#d82d7e"/>
+                                            </radialGradient>
+                                            <radialGradient cx="0.606" cy="1.05" r="1.029"
+                                                            gradientTransform="translate(0)"
+                                                            gradientUnits="objectBoundingBox">
+                                              <stop offset="0.64" stop-color="#8c3aaa" stop-opacity="0"/>
+                                              <stop offset="1" stop-color="#8c3aaa"/>
+                                            </radialGradient>
+                                          </defs>
+                                          <path data-name="Path 145"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                          <path data-name="Path 146"
+                                                d="M8.4,12.6a4.2,4.2,0,1,1,4.2,4.2,4.2,4.2,0,0,1-4.2-4.2m-2.271,0A6.47,6.47,0,1,0,12.6,6.13,6.469,6.469,0,0,0,6.13,12.6M17.813,5.873a1.512,1.512,0,1,0,1.513-1.511h0a1.513,1.513,0,0,0-1.512,1.511M7.509,22.855a6.963,6.963,0,0,1-2.34-.433,3.916,3.916,0,0,1-1.449-.942,3.887,3.887,0,0,1-.942-1.448,6.957,6.957,0,0,1-.433-2.34c-.061-1.328-.073-1.727-.073-5.092s.013-3.762.073-5.092a7.01,7.01,0,0,1,.433-2.34A3.916,3.916,0,0,1,3.72,3.719a3.883,3.883,0,0,1,1.449-.942,6.957,6.957,0,0,1,2.34-.433c1.328-.061,1.727-.073,5.09-.073s3.762.013,5.092.073a7.01,7.01,0,0,1,2.34.433,3.9,3.9,0,0,1,1.449.942,3.9,3.9,0,0,1,.942,1.449,6.957,6.957,0,0,1,.433,2.34c.061,1.329.073,1.727.073,5.092s-.012,3.762-.073,5.092a6.99,6.99,0,0,1-.433,2.34,4.172,4.172,0,0,1-2.392,2.391,6.957,6.957,0,0,1-2.34.433c-1.328.061-1.727.073-5.092.073s-3.762-.012-5.09-.073M7.4.076A9.239,9.239,0,0,0,4.347.662,6.18,6.18,0,0,0,2.115,2.115,6.156,6.156,0,0,0,.662,4.347,9.241,9.241,0,0,0,.076,7.4C.014,8.748,0,9.178,0,12.6s.014,3.851.076,5.194a9.241,9.241,0,0,0,.585,3.058,6.159,6.159,0,0,0,1.453,2.232,6.2,6.2,0,0,0,2.232,1.453,9.247,9.247,0,0,0,3.058.585c1.344.061,1.773.076,5.194.076s3.851-.014,5.194-.076a9.241,9.241,0,0,0,3.058-.585,6.442,6.442,0,0,0,3.685-3.685,9.216,9.216,0,0,0,.585-3.058c.061-1.344.075-1.773.075-5.194s-.014-3.851-.075-5.194a9.238,9.238,0,0,0-.585-3.058,6.2,6.2,0,0,0-1.453-2.232A6.165,6.165,0,0,0,20.853.662,9.226,9.226,0,0,0,17.795.076C16.451.015,16.022,0,12.6,0S8.749.014,7.4.076"
+                                                transform="translate(0 0)" fill="currentColor"/>
+                                        </svg>
+                                      </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper__nav--btn swiper-button-next"></div>
+                <div class="swiper__nav--btn swiper-button-prev"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End instagram section -->
+
+
+    </h3>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block body %}
+
+<form action="" method="post">
+
+    {% csrf_token %}
+
+<label for="">Username:</label>
+<input type="text" name="username" required><br><br>
+
+<label for="">Phonenumber:</label>
+<input type="number" name="phonenumber" required><br><br>
+
+<label for="">Password:</label>
+<input type="password" name="password" required><br><br>
+
+
+<label for="">Confirmpassword:</label>
+<input type="password" name="confirmpassword" required><br><br>
+
+<button>submit</button>
+
+</form>
+
+
+{% endblock %}

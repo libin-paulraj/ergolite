@@ -1,0 +1,22 @@
+{% comment %} <script>
+  const allSrc = JSON.parse(localStorage.getItem('allSrc')) || []
+  const priceList = JSON.parse(localStorage.getItem('priceList')) || []
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.product__items--action__cart--btn').forEach(function (button) {
+      button.addEventListener('click', function () {
+        const productContainer = button.closest('.product__items--content').previousElementSibling
+        const images = productContainer.querySelectorAll('.product__items--img')
+        const srcList = Array.from(images).map((img) => img.src)
+        const tempList = Array.from(images).map((img) => img.dataset.price)
+        // console.log(srcList);
+        allSrc.push(srcList)
+        priceList.push(tempList)
+		
+        localStorage.setItem('allSrc', JSON.stringify(allSrc))
+        localStorage.setItem('priceList', JSON.stringify(priceList))
+        window.location.href = '/cart/'
+      })
+    })
+  })
+</script> {% endcomment %}

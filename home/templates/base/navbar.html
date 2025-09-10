@@ -1,0 +1,214 @@
+{% load static %}
+<style>
+  @keyframes elastic {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  #logo {
+    height: 100px;
+    width: 270px;
+    animation: elastic 1.5s ease-out forwards; /* Apply the elastic animation */
+  }
+  
+  @media (max-width: 768px) {
+    .banner__items img {
+      height: 200px; /* Reduce image height on tablets/mobiles */
+    }
+  
+    .banner__items h2 {
+      font-size: 18px; /* Slightly smaller text */
+    }
+  
+    .banner__items {
+      margin-right: 0.5rem; /* Less space between items */
+    }
+  
+    .banner__section {
+      padding: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner__items img {
+      height: 150px; /* Further reduce image size on small phones */
+    }
+  
+    .banner__items h2 {
+      font-size: 16px;
+    }
+  }
+  
+  .banner__scroll-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrollBanner 10s linear infinite;
+  }
+  
+  @keyframes scrollBanner {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-80%);
+    }
+  }
+  
+  .banner__section {
+    background-color: wheat;
+    padding: 1rem;
+  }
+  
+  .banner__items {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+  
+  .banner__items img {
+    height: 400px;
+  }
+  
+  img {
+    background-color: whitesmoke;
+    filter: brightness(1.1);
+  }
+  
+  .navbar {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    position: relative;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    padding: 10px 20px;
+  }
+  
+  #logo {
+    width: 200px;
+    max-width: 30vw;
+  }
+  
+  /* Links */
+  .navbar-links {
+    display: flex;
+    gap: 60px;
+    font-size: 20px;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links a:hover {
+    color: skyblue;
+  }
+  
+  /* Toggler Button */
+  .navbar-toggler {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 991px) {
+    #logo {
+      width: 140px;
+      max-width: 50vw;
+    }
+  
+    .navbar-toggler {
+      display: block;
+      z-index: 110;
+    }
+  
+    .navbar-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: skyblue;
+      opacity: 0.95;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 15%;
+      transform: translateX(100%);
+      transition: transform 0.4s ease-in-out;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  
+    .navbar-links.show {
+      transform: translateX(0);
+    }
+  
+    #navbarToggler.active {
+      position: fixed;
+      right: 10%;
+    }
+  }
+  
+  .gradient-background {
+    background: linear-gradient(to right, skyblue, deepskyblue);
+    color: #f0f0f0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+</style>
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <a class="logo"><img id="logo" src="{% static 'assets/images/default-logo.png' %}" alt="Logo" class="logo-image" style="height: 100px; width: 270px " /></a>
+
+    <button id="navbarToggler" class="navbar-toggler" onclick="toggleNavbar()"><span class="navbar-toggler-icon"></span></button>
+    <div class="navbar-links" id="navbarLinks">
+      <a href="{% url 'home:home' %}" class="nav-link">Home</a>
+      <a href="{% url 'home:category' %}" class="nav-link">Category</a>
+      <a href="{% url 'home:products' %}" class="nav-link">Products</a>
+      <a href="{% url 'home:contact' %}" class="nav-link">Contact</a>
+
+      <a href="{% url 'home:login' %}" class="nav-link">Login</a>
+
+	  {% comment %} <a href="{% url 'home:cart' %}" class="nav-link">Cart</a> {% endcomment %}
+      {% comment %} <a href="{% url 'home:product_detail' %}" class="nav-link">productsdetails</a> {% endcomment %}
+    </div>
+  </div>
+
+  <script>
+    function toggleNavbar() {
+      const navbarLinks = document.getElementById('navbarLinks')
+      const navbarToggler = document.getElementById('navbarToggler')
+      navbarToggler.classList.toggle('active')
+      navbarLinks.classList.toggle('show')
+    }
+  </script>
+</nav>

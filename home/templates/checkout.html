@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{% block body %}
+  <div style="max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); height: 100vh;">
+    <h2 style="text-align:center;">Invoice</h2>
+    <hr />
+    <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+      <thead>
+        <tr style="border-bottom: 2px solid #ddd;">
+          <th style="text-align: left;">Product</th>
+          <th>Image</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart_items %}
+          <tr style="border-bottom: 1px solid #eee;">
+            <td>{{ item.product.name }}</td>
+            <td>
+              {% comment %} <img src="{{ item.cart.image.url }}" alt="{{ item.product.name }}" style="height: 120px; width: 100px;" /> {% endcomment %}
+              <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="height: 120px; width: 100px;" />
+            </td>
+
+            <td style="text-align: center;">{{ item.quantity }}</td>
+            <td>₹{{ item.product.price }}</td>
+            <td>₹{{ item.subtotal }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div style="margin-top: 30px; text-align: right;">
+      <p>Subtotal: ₹{{ subtotal }}</p>
+      <p>GST (18%): ₹{{ gst_amount|floatformat:2 }}</p>
+      <h3>Total: ₹{{ grand_total|floatformat:2 }}</h3>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <button onclick="window.print()" class="btn">🖨️ Print Bill</button>
+      <a href="{% url 'home:home' %}" class="btn" style="margin-left: 10px;">← Back to Shop</a>
+    </div>
+  </div>
+{% endblock %}

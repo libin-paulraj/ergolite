@@ -1,0 +1,434 @@
+{% extends 'base/base.html' %} {% load static %} {% block body %}
+  {% include 'imports/assets.html' %}
+  <link rel="stylesheet" href="{% static 'assets/css/About-Us.css' %}" media="screen" />
+
+  <style>
+   
+    .col {
+      width: 10%;
+    }
+    
+    .product-image {
+      transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
+      border-radius: 10px;
+      width: 100%;
+      height: auto;
+      max-width: 400px;
+      max-height: 400px;
+      object-fit: cover;
+    }
+    
+    .product-image:hover {
+      transform: scale(1.12);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+      z-index: 10;
+    }
+    
+    .col-md-4 {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hover-zoom {
+      transition: transform 0.3s ease;
+    }
+    
+    .hover-zoom:hover {
+      transform: scale(1.05);
+    }
+    
+    .hover-zoom:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+
+
+  </style>
+
+  <section class="section-products py-5 gradient-background" id="products">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="fw-bold animate__animated animate__flipInY text-dark">Company Products</h1>
+      </div>
+
+
+
+<!-- Include Animate.css in your template head if not already -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<h2 class="text-center mb-4 animate__animated animate__fadeInDown text-dark" style="font-style: italic">Director</h2>
+
+<div class="container">
+  <div class="row">
+    {% for director in director_chair %}
+   
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4 d-flex justify-content-center animate__animated animate__zoomIn" style="animation-delay: {{ forloop.counter0|add:'0.1' }}s;">
+        <div class="card h-100 shadow-sm hover-effect" style="width: 100%; max-width: 200px;">
+           <a href="{% url 'home:productdetail' director.id %}">
+          <img src="{{ director.image.url }}" alt="{{ director.name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title">{{ director.name }}</h6>
+            <a href="{% url 'home:productdetail' director.id %}" class="btn btn-outline-primary mt-2">Add to Cart</a>
+          </div>
+            </a>
+        </div>
+      </div>
+    
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Custom Hover Animation -->
+<style>
+  .hover-effect {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-effect:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<h2 class="text-center mb-4 animate__animated animate__fadeInDown text-dark" style="font-style: italic">Premium</h2>
+
+<div class="container">
+  <div class="row">
+    {% for Premium in Premium_chair %}
+    
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4 d-flex justify-content-center animate__animated animate__zoomIn" style="animation-delay: {{ forloop.counter0|add:'0.1' }}s;">
+        <div class="card h-100 shadow-sm hover-effect" style="width: 100%; max-width: 200px;">
+           <a href="{% url 'home:productdetail' Premium.id %}">
+          <img src="{{ Premium.image.url }}" alt="{{ Premium.name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title">{{ Premium.name }}</h6>
+            <a href="{% url 'home:productdetail' Premium.id %}" class="btn btn-outline-primary mt-2">Add to Cart</a>
+          </div>
+          </a>
+        </div>
+      </div>
+      
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Custom Hover Animation -->
+<style>
+  .hover-effect {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-effect:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<h2 class="text-center mb-4 animate__animated animate__fadeInDown text-dark" style="font-style: italic">Workforce</h2>
+
+<div class="container">
+  <div class="row">
+    {% for Workforce in Workforce_chair %}
+   
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4 d-flex justify-content-center animate__animated animate__zoomIn" style="animation-delay: {{ forloop.counter0|add:'0.1' }}s;">
+        <div class="card h-100 shadow-sm hover-effect" style="width: 100%; max-width: 200px;">
+           <a href="{% url 'home:productdetail' Workforce.id %}">
+          <img src="{{ Workforce.image.url }}" alt="{{ Workforce.name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title">{{ Workforce.name }}</h6>
+            <a href="{% url 'home:productdetail' Workforce.id %}" class="btn btn-outline-primary mt-2">Add to Cart</a>
+          </div>
+           </a>
+        </div>
+      </div>
+     
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Custom Hover Animation -->
+<style>
+  .hover-effect {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-effect:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<h2 class="text-center mb-4 animate__animated animate__fadeInDown text-dark" style="font-style: italic">Lounge</h2>
+
+<div class="container">
+  <div class="row">
+    {% for Lounge in Lounge_chair %}
+   
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4 d-flex justify-content-center animate__animated animate__zoomIn" style="animation-delay: {{ forloop.counter0|add:'0.1' }}s;">
+        <div class="card h-100 shadow-sm hover-effect" style="width: 100%; max-width: 200px;">
+           <a href="{% url 'home:productdetail' Lounge.id %}">
+          <img src="{{ Lounge.image.url }}" alt="{{Lounge.name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title">{{Lounge.name }}</h6>
+            <a href="{% url 'home:productdetail' Lounge.id %}" class="btn btn-outline-primary mt-2">Add to Cart</a>
+          </div>
+           </a>
+        </div>
+      </div>
+     
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Custom Hover Animation -->
+<style>
+  .hover-effect {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-effect:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<h2 class="text-center mb-4 animate__animated animate__fadeInDown text-dark" style="font-style: italic">Visitor</h2>
+
+<div class="container">
+  <div class="row">
+    {% for Visitor in Visitor_chair %}
+    
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4 d-flex justify-content-center animate__animated animate__zoomIn" style="animation-delay: {{ forloop.counter0|add:'0.1' }}s;">
+        <div class="card h-100 shadow-sm hover-effect" style="width: 100%; max-width: 200px;">
+          <a href="{% url 'home:productdetail' Visitor.id %}">
+          <img src="{{ Visitor.image.url }}" alt="{{Visitor.name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title">{{Visitor.name }}</h6>
+            <a href="{% url 'home:productdetail' Visitor.id %}" class="btn btn-outline-primary mt-2">Add to Cart</a>
+          </div>
+           </a>
+        </div>
+      </div>
+     
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Custom Hover Animation -->
+<style>
+  .hover-effect {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-effect:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<h2 class="text-center mb-4 animate__animated animate__fadeInDown text-dark" style="font-style: italic">Cafeteria</h2>
+
+<div class="container">
+  <div class="row">
+    {% for Cafeteria in Cafeteria_chair %}
+   
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4 d-flex justify-content-center animate__animated animate__zoomIn" style="animation-delay: {{ forloop.counter0|add:'0.1' }}s;">
+        <div class="card h-100 shadow-sm hover-effect" style="width: 100%; max-width: 200px;" href="{% url 'home:productdetail' Cafeteria.id %}">
+           <a href="{% url 'home:productdetail' Cafeteria.id %}">
+          <img src="{{Cafeteria.image.url }}" alt="{{Cafeteria.name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title">{{Cafeteria.name }}</h6>
+            <a href="{% url 'home:productdetail' Cafeteria.id %}" class="btn btn-outline-primary mt-2">Add to Cart</a>
+          </div>
+           </a>
+        </div>
+      </div>
+     
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Custom Hover Animation -->
+<style>
+  .hover-effect {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-effect:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+
+      <!-- Call to Action Button -->
+      <div class="text-center mb-5">
+        <a href="#" class="btn btn-primary rounded-pill px-5 py-2">Contact Us</a>
+      </div>
+
+      <!-- Background Image -->
+      <div class="text-center mb-5">
+        <img src="{% static 'assets/img/b11.webp' %}" alt="Living Room Setup" class="img-fluid w-100" />
+      </div>
+
+      <!-- Contact Info -->
+      <div class="bg-primary text-white p-4 rounded">
+        <div class="row">
+          <div class="col-md-4">
+            <h6>Email</h6>
+            <!-- <p><a href="mailto:agency@yourwebsite.com" class="text-white">agency@yourwebsite.com</a></p> -->
+          </div>
+          <div class="col-md-4">
+            <h6>Phone</h6>
+            <!-- <p><a href="tel:+987987654321" class="text-white">(+987) 987 654 321</a></p> -->
+          </div>
+          <div class="col-md-4">
+            <h6>Location</h6>
+            <p>
+              Helpdesk Technopark<br />Headoffice, ​Chair mart ,​ Arysala trivandurm
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-clearfix u-palette-5-light-1 u-valign-top-sm u-section-3" id="carousel_c1fd">
+    <div class="u-expanded-width u-shape u-shape-rectangle u-white u-shape-1"></div>
+    <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+      <div class="u-gutter-0 u-layout">
+        <div class="u-layout-col">
+          <div class="u-container-style u-image u-layout-cell u-size-30 u-image-1" data-image-width="1980" data-image-height="1320">
+            <div class="u-container-layout u-container-layout-1"></div>
+          </div>
+          <div class="u-align-center-lg u-align-center-md u-align-center-xl u-align-left-sm u-align-left-xs u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+            <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-valign-top-sm u-valign-top-xs u-container-layout-2">
+              <h2 class="u-text u-text-default u-text-1">How We Work</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-clearfix u-layout-wrap u-layout-wrap-2">
+      <div class="u-gutter-0 u-layout">
+        <div class="u-layout-row">
+          <div class="u-container-style u-layout-cell u-size-26-xl u-size-28-lg u-size-28-md u-size-28-sm u-size-28-xs u-layout-cell-3">
+            <div class="u-container-layout u-valign-top u-container-layout-3">
+              <p class="u-text u-text-2">
+                We excel in the business of human potential, and believe in its power to shape strategic, organizational, economic, and societal change.&nbsp;We believe that great design transforms everyday living. Our process centers around understanding your space, style, and needs — turning ideas into functional, beautiful environments. From initial consultation to final installation, we’re with you every step of the way to ensure a seamless and satisfying experience.<br />
+              </p>
+            </div>
+          </div>
+          <div class="u-container-style u-layout-cell u-size-32-lg u-size-32-md u-size-32-sm u-size-32-xs u-size-34-xl u-layout-cell-4">
+            <div class="u-container-layout u-container-layout-4">
+              <p class="u-text u-text-3">Our team combines creativity, craftsmanship, and attention to detail to deliver furniture and interiors that reflect your personality and enhance your lifestyle. Whether you're refreshing a single room or designing an entire home, we’re here to bring your vision to life.</p>
+
+              <a href="#" class="u-active-black u-align-center u-btn u-btn-round u-button-style u-hover-black u-palette-1-base u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-2" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="u-align-center u-clearfix u-container-align-center-md u-container-align-center-xl u-white u-section-4" id="carousel_9d15">
+    <div class="u-expanded-width u-palette-5-light-1 u-shape u-shape-rectangle u-shape-1"></div>
+    <h2 class="u-align-center u-text u-text-1">Designing Inspired Spaces – Interior Design & Office Chair Experts</h2>
+    <img class="u-image u-image-default u-image-1" src="{% static 'assets/img/c6.jpg' %}" alt="" data-image-width="1700" data-image-height="759" data-animation-name="fadeIn" data-animation-duration="1500" data-animation-direction="Right" data-animation-delay="500" />
+    <div class="u-list u-list-1">
+      <div class="u-repeater u-repeater-1">
+        <div class="u-align-center u-container-style u-list-item u-repeater-item u-shape-rectangle u-white u-list-item-1" data-animation-name="fadeIn" data-animation-duration="1500" data-animation-direction="Right" data-animation-delay="500">
+          <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-1">
+            <p class="u-text u-text-default u-text-grey-60 u-text-2">awards won</p>
+            <h3 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-3" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">17</h3>
+          </div>
+        </div>
+        <div class="u-align-center u-container-style u-list-item u-repeater-item u-shape-rectangle u-white u-list-item-2" data-animation-name="fadeIn" data-animation-duration="1500" data-animation-direction="Right" data-animation-delay="500">
+          <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-2">
+            <p class="u-text u-text-default u-text-grey-60 u-text-4">XP YEARS</p>
+            <h3 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-5" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">12+</h3>
+          </div>
+        </div>
+        <div class="u-align-center u-container-style u-list-item u-repeater-item u-shape-rectangle u-white u-list-item-3" data-animation-name="fadeIn" data-animation-duration="1500" data-animation-direction="Right" data-animation-delay="500">
+          <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-3">
+            <p class="u-text u-text-default u-text-grey-60 u-text-6">clients</p>
+            <h3 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">108</h3>
+          </div>
+        </div>
+        <div class="u-align-center u-container-style u-list-item u-repeater-item u-shape-rectangle u-white u-list-item-4" data-animation-name="fadeIn" data-animation-duration="1500" data-animation-direction="Right" data-animation-delay="500">
+          <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-4">
+            <p class="u-text u-text-default u-text-grey-60 u-text-8">projects</p>
+            <h3 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-9" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">150</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="mailto:hi@freedesigner.com" class="u-active-black u-align-center u-border-none u-btn u-btn-round u-button-style u-hover-black u-palette-1-base u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-1">Contact Us</a>
+  </section>
+
+  <section class="u-align-center u-clearfix u-palette-1-base u-section-6" id="sec-01ba">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div class="u-align-left u-container-style u-layout-cell u-size-30 u-white u-layout-cell-1">
+              <div class="u-container-layout u-container-layout-1">
+                <h2 class="u-text u-text-1">Contacts</h2>
+                <p class="u-text u-text-2">
+                  Use our contact form for all information requests or contact us directly using the contact information below. <br />
+                  <br />Feel free to get in touch with us via email or phone
+                </p>
+              </div>
+            </div>
+            <div class="u-container-style u-layout-cell u-size-30 u-white u-layout-cell-2">
+              <div class="u-container-layout u-container-layout-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="u-expanded-width u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+          <div class="u-align-left u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-container-layout-3">
+
+              <span class="u-file-icon u-icon u-text-white u-icon-1">
+
+             	<i class="bi bi-geo-alt-fill" style="font-size: xx-large; "></i> 
+
+            </span>
+              <h6 class="u-custom-font u-font-montserrat u-text u-text-5">Our Office Location</h6>
+              <p class="u-text u-text-6">
+                Helpdesk Technopark<br />Headoffice, ​Chair mart ,​ Arysala trivandurm
+              </p>
+            </div>
+          </div>
+          <div class="u-align-left u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-container-layout-4">
+
+              <span class="u-file-icon u-icon u-text-white u-icon-2">
+
+                <i class="bi bi-telephone-fill " style="font-size: xx-large; "></i> 
+                
+              </span>
+              <h6 class="u-custom-font u-font-montserrat u-text u-text-7">Phone (Landline)</h6>
+              <p class="u-text u-text-8">
+                <!-- + 912 3 567 8987<br />+ 912 5 252 3336 -->
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
